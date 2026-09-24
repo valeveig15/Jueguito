@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#12182b" />
+  <title>Break.exe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="status-dot"></span>
+        <span>BREAK.EXE</span>
+      </div>
+      <button id="soundToggle" class="icon-btn" aria-label="Activar o desactivar sonido" title="Sonido">🔊</button>
+    </header>
+
+    <section class="screen active" id="screenIntro">
+      <div class="eyebrow">ALERTA DEL SISTEMA</div>
+      <h1>Se detectó una cantidad sospechosa de trabajo.</h1>
+      <p class="lead">
+        Este dispositivo recomienda una microdosis de distracción completamente irresponsable.
+      </p>
+
+      <div class="fake-terminal" aria-label="Diagnóstico">
+        <p><span>&gt;</span> estado: trabajando</p>
+        <p><span>&gt;</span> yo: de vacaciones 😌</p>
+        <p><span>&gt;</span> compatibilidad horaria: lamentable</p>
+        <p><span>&gt;</span> solución propuesta: robarte 4 minutos</p>
+      </div>
+
+      <button class="primary-btn" id="startBtn">Aceptar riesgo laboral</button>
+      <p class="microcopy">No requiere contraseña, tarjeta ni permiso de Recursos Humanos.</p>
+    </section>
+
+    <section class="screen" id="screenGame">
+      <div class="progress-wrap" aria-label="Progreso del juego">
+        <div class="progress-meta">
+          <span id="levelLabel">Nivel 1 de 4</span>
+          <span id="progressText">25%</span>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+
+      <div id="gameContent" class="game-content"></div>
+    </section>
+
+    <section class="screen" id="screenFinal">
+      <div class="eyebrow">MISIÓN CUMPLIDA</div>
+      <h1 id="finalTitle">Excelente. Productividad interrumpida con éxito.</h1>
+      <p class="lead" id="finalMessage"></p>
+
+      <div class="voucher" id="voucher">
+        <div class="voucher-stamp">VALE</div>
+        <div>
+          <span class="voucher-label">PREMIO DESBLOQUEADO</span>
+          <strong id="voucherText">7 minutos de break conmigo</strong>
+          <small>Válido cuando puedas escaparte. No acumulable con reuniones eternas.</small>
+        </div>
+      </div>
+
+      <div class="final-actions">
+        <button class="primary-btn" id="replayBtn">Jugar otra vez</button>
+        <button class="secondary-btn" id="copyBtn">Copiar reclamo</button>
+      </div>
+      <p id="copyFeedback" class="microcopy" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
