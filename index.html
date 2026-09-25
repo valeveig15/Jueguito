@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102015" />
+  <meta name="description" content="Tambo Break: una aventura de cartas, vacas y criptografía innecesariamente seria." />
+  <title>Tambo Break // The Milking Deck</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="world" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="cloud cloud-a"><i></i><i></i><i></i></div>
+    <div class="cloud cloud-b"><i></i><i></i><i></i></div>
+    <div class="cloud cloud-c"><i></i><i></i><i></i></div>
+    <div class="hill hill-far"></div>
+    <div class="hill hill-mid"></div>
+    <div class="hill hill-near"></div>
+
+    <div class="farm-complex">
+      <div class="barn">
+        <div class="barn-roof"></div>
+        <div class="barn-face">
+          <div class="barn-loft"></div>
+          <div class="barn-door"><span></span></div>
+          <div class="barn-window barn-window-left"></div>
+          <div class="barn-window barn-window-right"></div>
+        </div>
+      </div>
+      <div class="silo">
+        <div class="silo-cap"></div>
+        <div class="silo-highlight"></div>
+        <div class="silo-band band-a"></div>
+        <div class="silo-band band-b"></div>
+        <div class="silo-base"></div>
+      </div>
+    </div>
+
+    <div class="tractor">
+      <div class="tractor-exhaust"></div>
+      <div class="tractor-hood"></div>
+      <div class="tractor-cabin"><span></span></div>
+      <div class="tractor-body"></div>
+      <div class="tractor-wheel tractor-wheel-big"></div>
+      <div class="tractor-wheel tractor-wheel-small"></div>
+    </div>
+
+    <div class="background-cow cow-1">🐄</div>
+    <div class="background-cow cow-2">🐄</div>
+    <div class="background-cow cow-3">🐄</div>
+  </div>
+
+  <div id="floatLayer" class="float-layer" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="status-dot"></span><span>TAMBO BREAK // DECK PROTOCOL</span></div>
+      <div class="top-actions">
+        <div class="tiny-stat" id="cowCounter">🐄 0</div>
+        <div class="tiny-stat bond-top" id="bondTop">✦ 0</div>
+        <button id="soundToggle" class="icon-btn" aria-label="Desactivar sonido" title="Sonido">🔊</button>
+      </div>
+    </header>
+
+    <section class="screen active" id="screenIntro">
+      <div class="intro-grid">
+        <div>
+          <div class="eyebrow">PROTOCOLO ANTITRABAJO RURAL // EDICIÓN DE CARTAS</div>
+          <h1>El tambo acaba de convertirse en un juego.</h1>
+          <p class="lead">Hay criaturas, cartas, energía, decisiones cuestionables y una cantidad administrativamente innecesaria de vacas.</p>
+
+          <div class="terminal-card">
+            <div class="terminal-bar"><span></span><span></span><span></span><b>tambo_quest.exe</b></div>
+            <div class="fake-terminal" id="terminalLines">
+              <p><span>&gt;</span> jugador: trabajando</p>
+              <p><span>&gt;</span> remitente: de vacaciones, sospechosamente tranquila</p>
+              <p><span>&gt;</span> mazo inicial: poco profesional</p>
+              <p><span>&gt;</span> jefes detectados: 4</p>
+              <p><span>&gt;</span> recompensa: clasificada</p>
+            </div>
+          </div>
+
+          <div class="intro-actions">
+            <button class="primary-btn" id="startBtn">Entrar al tambo prohibido</button>
+            <button class="secondary-btn" id="panicBtn">No puedo, estoy trabajando</button>
+          </div>
+          <p class="microcopy">Las vacas insisten en que esto cuenta como capacitación.</p>
+        </div>
+
+        <div class="hero-machine card-preview-machine">
+          <div class="machine-label">MAZO DE EMERGENCIA</div>
+          <div class="mini-card-stack" aria-hidden="true">
+            <div class="mini-card mini-card-back"></div>
+            <div class="mini-card mini-card-mid"></div>
+            <div class="mini-card mini-card-front">
+              <span class="mini-cost">2</span>
+              <div class="mini-art">🐄</div>
+              <b>Vaca con Autoridad</b>
+              <small>“Muu” pero con consecuencias.</small>
+            </div>
+          </div>
+          <div class="machine-warning">⚠ estrategia recomendada: improvisar</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screenGame">
+      <div class="progress-wrap">
+        <div class="progress-meta"><span id="levelLabel">Encuentro 1 de 4</span><span id="progressText">25%</span></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+      <div id="gameContent" class="game-content"></div>
+    </section>
+
+    <section class="screen" id="screenFinal">
+      <div class="final-badge">CÓDIGO DESCIFRADO · EXPEDIENTE CERRADO</div>
+      <h1>Acceso concedido.</h1>
+      <p class="lead" id="finalMessage">Contra todo pronóstico, derrotaste a la criptografía bovina.</p>
+
+      <div class="final-dashboard">
+        <div class="final-stat"><span id="finalCows">0</span><small>vacas derrotadas</small></div>
+        <div class="final-stat"><span id="finalBond">0</span><small>energía dúo</small></div>
+        <div class="final-stat"><span id="finalChaos">0</span><small>puntos de caos</small></div>
+      </div>
+
+      <div class="secret-reveal" id="secretReveal">
+        <div class="secret-reveal-top"><span>🔓 MENSAJE DESCIFRADO</span><span>MUU-256 // ACCESS GRANTED</span></div>
+        <div class="secret-message" id="secretMessage"></div>
+        <small>El “only a little bit” sigue siendo información técnicamente discutible.</small>
+      </div>
+
+      <div class="final-actions">
+        <button class="primary-btn" id="replayBtn">Volver a jugar</button>
+        <button class="secondary-btn" id="copyBtn">Copiar mensaje</button>
+      </div>
+      <p id="copyFeedback" class="microcopy" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
